@@ -10,5 +10,6 @@ class Reunion
   def add_activities(activity)
     activity = Activity.new("hiking")
     @activities << activity
+    return activity
   end
 end

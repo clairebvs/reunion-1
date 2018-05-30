@@ -24,9 +24,14 @@ class ReunionTest < Minitest::Test
 
   def test_cann_add_activities_to_reunion
     reunion = Reunion.new
-    activity = Activity.new("hiking")
-    reunion.add_activities(activity)
+    activity = Activity.new('hiking')
+    activity2 = Activity.new('stand up paddle')
 
-    assert_equal [activity], reunion.activities
+    reunion.add_activities(activity)
+    reunion.add_activities(activity2)
+
+    assert_equal 2, reunion.activities.length
   end
+
+
 end
