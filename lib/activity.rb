@@ -17,4 +17,8 @@ class Activity
     @base_cost + @participants.values.sum
   end
 
+  def fair_cost
+    total_cost / @participants.keys.count
+  end
+
 end

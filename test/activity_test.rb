@@ -48,9 +48,28 @@ class ActivityTest < Minitest::Test
 
   def test_activity_has_total_cost
     activity = Activity.new("hiking")
+    activity2 = Activity.new("stand up paddling", 100)
 
     activity.add_participants("George", 20)
     activity.add_participants("Louis", 40)
     assert_equal 110, activity.total_cost
+
+    activity2.add_participants("Arielle", 10)
+    activity2.add_participants("Jacqueline", 40)
+    assert_equal 150, activity2.total_cost
   end
+
+  def test_activity_has_fair_cost_per_participant
+    activity = Activity.new("hiking")
+    activity2 = Activity.new("stand up paddling", 100)
+
+    activity.add_participants("George", 20)
+    activity.add_participants("Louis", 40)
+    assert_equal 55, activity.fair_cost
+
+    activity2.add_participants("Arielle", 10)
+    activity2.add_participants("Jacqueline", 40)
+    assert_equal 75, activity2.fair_cost
+  end
+
 end
