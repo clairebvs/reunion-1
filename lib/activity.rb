@@ -3,7 +3,7 @@ class Activity
               :participants,
               :base_cost
 
-  def initialize(name, base_cost = 50)
+  def initialize(name, base_cost = 10)
     @name = name
     @participants = {}
     @base_cost = base_cost
@@ -19,6 +19,17 @@ class Activity
 
   def fair_cost
     total_cost / @participants.keys.count
+  end
+
+  def calculate_owed_owes_money
+    participants_cost = @participants.values
+    participants_cost.map do |cost|
+      if fair_cost > cost
+        fair_cost - cost
+      else
+        fair_cost - cost
+      end
+    end
   end
 
 end
